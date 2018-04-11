@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_04_11_215451) do
+ActiveRecord::Schema.define(version: 2018_04_11_221826) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name", limit: 100, null: false
@@ -27,6 +27,24 @@ ActiveRecord::Schema.define(version: 2018_04_11_215451) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_manufacturers_on_name", unique: true
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.integer "category_id", null: false
+    t.integer "external_id", null: false
+    t.string "name", limit: 100
+    t.integer "manufacturer_id", null: false
+    t.string "manufacturer_code", limit: 100
+    t.string "ean", limit: 100
+    t.decimal "price", precision: 12, scale: 2, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_products_on_category_id"
+    t.index ["external_id"], name: "index_products_on_external_id", unique: true
+    t.index ["manufacturer_code"], name: "index_products_on_manufacturer_code"
+    t.index ["manufacturer_id"], name: "index_products_on_manufacturer_id"
+    t.index ["name"], name: "index_products_on_name"
+    t.index ["price"], name: "index_products_on_price"
   end
 
 end
