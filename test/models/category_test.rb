@@ -12,4 +12,9 @@ class CategoryTest < ActiveSupport::TestCase
     category.valid?
     assert_includes category.errors[:name], "has already been taken"
   end
+
+  def test_ability_to_create_root_category
+    category = Category.new(name: 'Shoes')
+    assert category.valid?
+  end
 end
