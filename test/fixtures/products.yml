@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+cool_watch_one:
+  category: mens_watches
+  external_id: 1
+  name: Cool Watch One
+  manufacturer: cool_watch
+  manufacturer_code: ABC
+  ean: abc
+  price: 149.99
+
