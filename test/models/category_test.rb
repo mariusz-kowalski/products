@@ -17,4 +17,18 @@ class CategoryTest < ActiveSupport::TestCase
     category = Category.new(name: 'Shoes')
     assert category.valid?
   end
+
+  def test_name_longer_than_2
+    category = Category.new name: 'aa'
+    category.valid?
+    assert_includes category.errors[:name],
+                    'is too short (minimum is 3 characters)'
+  end
+
+  def test_name_shorter_than_101
+    category = Category.new(name: 'a' * 101)
+    category.valid?
+    assert_includes category.errors[:name],
+                    'is too long (maximum is 100 characters)'
+  end
 end
