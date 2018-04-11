@@ -1,0 +1,8 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+watches:
+  name: Watches
+
+mens_watches:
+  name: Mens
+  parent: watches
