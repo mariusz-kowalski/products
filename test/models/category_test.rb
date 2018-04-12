@@ -31,4 +31,10 @@ class CategoryTest < ActiveSupport::TestCase
     assert_includes category.errors[:name],
                     'is too long (maximum is 100 characters)'
   end
+
+  def test_find_or_create_with_parents
+    category = Category.find_or_create_with_parents(%w[Watches Womens])
+    assert category
+    assert_equal categories(:watches), category.parent
+  end
 end
