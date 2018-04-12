@@ -59,6 +59,12 @@ class ProductTest < ActiveSupport::TestCase
                     'is too long (maximum is 100 characters)'
   end
 
+  def test_no_manufacturer_code
+    product = Product.new
+    product.valid?
+    assert_empty product.errors[:manufacturer_code]
+  end
+
   def test_ean_longer_than_2
     product = Product.new ean: 'aa'
     product.valid?
@@ -71,5 +77,11 @@ class ProductTest < ActiveSupport::TestCase
     product.valid?
     assert_includes product.errors[:ean],
                     'is too long (maximum is 100 characters)'
+  end
+
+  def test_no_ean
+    product = Product.new
+    product.valid?
+    assert_empty product.errors[:ean]
   end
 end
