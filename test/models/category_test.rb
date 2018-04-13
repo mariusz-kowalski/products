@@ -33,7 +33,7 @@ class CategoryTest < ActiveSupport::TestCase
   end
 
   def test_find_or_create_with_parents
-    category = Category.find_or_create_with_parents(%w[Watches Womens])
+    category = Category.find_or_create_with_parents!(%w[Watches Womens])
     assert category
     assert_equal categories(:watches), category.parent
   end

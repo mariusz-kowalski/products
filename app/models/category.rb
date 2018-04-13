@@ -6,10 +6,10 @@ class Category < ApplicationRecord
                    uniqueness: { scope: :parent },
                    length: { minimum: 3, maximum: 100 }
 
-  def self.find_or_create_with_parents(names)
+  def self.find_or_create_with_parents!(names)
     parent = nil
     names.each do |name|
-      parent = find_or_create_by(name: name, parent: parent)
+      parent = find_or_create_by!(name: name, parent: parent)
     end
     parent
   end
