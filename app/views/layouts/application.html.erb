@@ -10,6 +10,16 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <h1><%= yield :title %></h1>
+    </header>
+    <div id="body">
+      <aside id="left_panel">
+        <%= yield :left_panel %>
+      </aside>
+      <section id="content">
+        <%= yield %>
+      </section>
+    </div>
   </body>
 </html>
