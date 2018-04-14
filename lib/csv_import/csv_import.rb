@@ -1,5 +1,4 @@
 require 'csv'
-require_relative 'csv_source_one.rb'
 
 class CSVImport
   def initialize(file_path)
