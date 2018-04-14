@@ -16,7 +16,7 @@ class CSVImport
   def import(row)
     record = CSVSourceOne.new(row)
     result = AddProduct.call(product_attributes: record.fetch_product,
-                             category_branch: record.fetch_category,
+                             category_path: record.fetch_category,
                              manufacturer_name: record.fetch_manufacturer)
     if result.failure?
       Rails.logger.error result.message

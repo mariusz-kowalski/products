@@ -8,7 +8,7 @@ class AddProductTest < ActiveSupport::TestCase
                             manufacturer_code: '111',
                             ean: '222',
                             price: '505' },
-      category_branch: %w[Watches Mens],
+      category_path: %w[Watches Mens],
       manufacturer_name: 'Super Watch'
     )
 
