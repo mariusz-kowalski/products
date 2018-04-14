@@ -14,20 +14,13 @@ class CSVImport
   private
 
   def import(row)
-    ActiveRecord::Base.transaction do
-      record = CSVSourceOne.new(row)
-      product_attributes = record.fetch_product
-      category_branch = record.fetch_category
-      manufacturer_name = record.fetch_manufacturer
-      category = Category.find_or_create_with_parents!(category_branch)
-      manufacturer = Manufacturer.find_or_create_by!(name: manufacturer_name)
-      Product.create!(
-        product_attributes.merge(category: category, manufacturer: manufacturer)
-      )
+    record = CSVSourceOne.new(row)
+    result = AddProduct.call(product_attributes: record.fetch_product,
+                             category_branch: record.fetch_category,
+                             manufacturer_name: record.fetch_manufacturer)
+    if result.failure?
+      Rails.logger.error result.message
+      STDERR.puts result.message
     end
-  rescue ActiveRecord::ActiveRecordError => e
-    message = "Can't import row (#{row}), message: #{e.message}"
-    Rails.logger.error message
-    STDERR.puts message
   end
 end
