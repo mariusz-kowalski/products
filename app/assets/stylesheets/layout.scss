@@ -4,9 +4,9 @@
 
 #body > #left_panel {
   width: 200px;
-  background-color: gray;
 }
 
 #body > #content {
-  background-color: yellow;
+  background-color: gray;
+  flex: 1
 }

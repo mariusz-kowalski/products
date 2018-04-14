@@ -1,4 +1,10 @@
 <% content_for(:title) { 'Products' } %>
+<% content_for :header do %>
+  <form>
+    <input type="text" name="search">
+    <input type="submit" value="Search">
+  </form>
+<% end %>
 <% content_for :left_panel do %>
   left panel
 <% end %>
