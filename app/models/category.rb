@@ -23,4 +23,8 @@ class Category < ApplicationRecord
     end
     steps
   end
+
+  def path_names
+    path.map(&:name)
+  end
 end

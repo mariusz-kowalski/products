@@ -42,4 +42,9 @@ class CategoryTest < ActiveSupport::TestCase
     assert_equal [categories(:watches), categories(:mens_watches)],
                  categories(:mens_watches).path
   end
+
+  def test_path_names
+    assert_equal %w[Watches Mens],
+                 categories(:mens_watches).path_names
+  end
 end
