@@ -1,5 +1,9 @@
 class ProductsController < ApplicationController
   def index
-    @products = Product.all.includes(:category, :manufacturer)
+    if params[:search].present?
+      @products = Product.search(params[:search])
+    else
+      @products = Product.all.includes(:category, :manufacturer)
+    end
   end
 end

@@ -1,4 +1,7 @@
 class Product < ApplicationRecord
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
+
   belongs_to :category
   belongs_to :manufacturer
 
@@ -10,4 +13,14 @@ class Product < ApplicationRecord
                   allow_nil: true
   validates :price, presence: true,
                     numericality: { greater_than: 0 }
+
+  index_name "products-#{Rails.env}"
+
+  def as_indexed_json(options={})
+    as_json(
+      only: ['name', 'manufacturer_code', 'ean', 'price'],
+      include: { category: { methods: 'path_names', only: 'path_names' },
+                 manufacturer: { only: 'name' } }
+    )
+  end
 end

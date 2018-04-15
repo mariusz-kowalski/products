@@ -1,7 +1,7 @@
 <% content_for(:title) { 'Products' } %>
 <% content_for :header do %>
   <form>
-    <input type="text" name="search">
+    <input type="text" name="search" value="<%= params[:search] %>">
     <input type="submit" value="Search">
   </form>
 <% end %>
