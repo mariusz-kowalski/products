@@ -13,4 +13,14 @@ class Category < ApplicationRecord
     end
     parent
   end
+
+  def path
+    steps = []
+    pointer = self
+    while pointer
+      steps.prepend pointer
+      pointer = pointer.parent
+    end
+    steps
+  end
 end

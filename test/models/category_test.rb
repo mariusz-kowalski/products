@@ -37,4 +37,9 @@ class CategoryTest < ActiveSupport::TestCase
     assert category
     assert_equal categories(:watches), category.parent
   end
+
+  def test_path
+    assert_equal [categories(:watches), categories(:mens_watches)],
+                 categories(:mens_watches).path
+  end
 end
