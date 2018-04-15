@@ -1,21 +1,8 @@
 <% content_for(:title) { 'Products' } %>
-<% content_for :header do %>
-  <form>
-    <input type="text" name="search" value="<%= params[:search] %>">
-    <input type="submit" value="Search">
-  </form>
-<% end %>
+<% content_for :header do
+  render partial: 'common/search_form'
+end %>
 <% content_for :left_panel do %>
   left panel
 <% end %>
-<table id="products">
-  <tr>
-    <th>Name</th>
-    <th>Manufacturer</th>
-    <th>Category</th>
-    <th>Manufacturer code</th>
-    <th>EAN</th>
-    <th>Price</th>
-  </tr>
-  <%= render partial: 'product', collection: @products %>
-</table>
+<%= render partial: 'products', locals: { products: @products } %>

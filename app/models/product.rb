@@ -15,6 +15,7 @@ class Product < ApplicationRecord
                     numericality: { greater_than: 0 }
 
   index_name "products-#{Rails.env}"
+  self.per_page = 10
 
   def as_indexed_json(options={})
     as_json(

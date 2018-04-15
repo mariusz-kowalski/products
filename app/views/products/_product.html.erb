@@ -1,7 +1,7 @@
 <tr>
   <td><%= product.name %></td>
   <td><%= product.manufacturer.name %></td>
-  <td><%= product.category.path_names %></td>
+  <td><%= category_path(product.category.path_names) %></td>
   <td><%= product.manufacturer_code %></td>
   <td><%= product.ean %></td>
   <td><%= product.price %></td>

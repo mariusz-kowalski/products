@@ -1,0 +1,12 @@
+<%= will_paginate products %>
+<table id="products">
+  <tr>
+    <th>Name</th>
+    <th>Manufacturer</th>
+    <th>Category</th>
+    <th>Manufacturer code</th>
+    <th>EAN</th>
+    <th>Price</th>
+  </tr>
+  <%= render partial: 'product', collection: products %>
+</table>
